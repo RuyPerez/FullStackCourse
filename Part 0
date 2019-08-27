@@ -1,0 +1,37 @@
+ DIAGRAM1 
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: [{ content: "HTML is easy", date: 2019-05-23T17:30:31.098Z" }, ...,{content: "prueba", date: "2019-08-27T07:05:02.636Z"}]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+
+
+
+
+
+DIAGRAM2 
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/spa
+
+notes over browser:
+The data is sent to the server with form submit, and the server instructs the browser to reload the Notes page with a redirect.
+The POST request to the address new_note_spa contains the new note as JSON-data : 
+{content: "prueba", date: "2019-08-27T07:10:07.891Z"}
+the header indicate the type : application/json
+end note
